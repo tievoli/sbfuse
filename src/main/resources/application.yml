@@ -3,6 +3,11 @@ server:
 
 spring:
   ################
+  #  profiles
+  ################
+  profiles:
+    active: dev
+  ################
   #  MySQL
   ################
   datasource:
