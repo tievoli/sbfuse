@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class BaseServiceImpl<T, M extends BaseMapper> implements BaseService<T> {
+public class BaseServiceImpl<T> implements BaseService<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 
@@ -37,8 +37,9 @@ public class BaseServiceImpl<T, M extends BaseMapper> implements BaseService<T> 
     private static final int MAX_BATCH_SIZE = 200;
 
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    private M mapper;
+    private BaseMapper<T> mapper;
 
     //获取泛型类型
     protected Class<T> getSuperClassGenricType() {

@@ -46,11 +46,17 @@ public class UserController {
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    @ApiOperation(value = "获取用户信息列表")
-    public Result getUserList(@PathVariable Long id) {
+    @ApiOperation(value = "根据用户Id获取用户信息")
+    public Result getUserById(@PathVariable Long id) {
         User user = new User();
         user.setId(id);
         return Result.success(userService.selectById(user));
+    }
+
+    @RequestMapping(value = "/getUserList", method = RequestMethod.GET)
+    @ApiOperation(value = "获取用户信息列表")
+    public Result getUserList() {
+        return Result.success(userService.getUserList());
     }
 
 }
