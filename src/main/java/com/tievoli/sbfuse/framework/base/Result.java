@@ -1,5 +1,9 @@
 package com.tievoli.sbfuse.framework.base;
 
+import com.tievoli.sbfuse.framework.GlobalConstants;
+import com.tievoli.sbfuse.framework.exceptions.ErrorCode;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
@@ -9,10 +13,13 @@ import java.io.Serializable;
  */
 public class Result<T> implements Serializable {
 
+    @ApiModelProperty(value = "返回码", required = true)
     private String code;
 
+    @ApiModelProperty("错误原因")
     private String message;
 
+    @ApiModelProperty("返回数据")
     private T data;
 
     public Result(String code, String message, T data) {
@@ -22,7 +29,11 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> success() {
-        return success("00000", "成功");
+        return success(GlobalConstants.RESPONSE_SUCCESS_CODE, GlobalConstants.RESPONSE_SUCCESS_MESSAGE);
+    }
+
+    public static <T> Result<T> success(T data) {
+        return success(GlobalConstants.RESPONSE_SUCCESS_CODE, GlobalConstants.RESPONSE_SUCCESS_MESSAGE, data);
     }
 
     public static <T> Result<T> success(String code, String message) {
@@ -34,7 +45,7 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> error() {
-        return error("99999", "失败");
+        return error(ErrorCode.UNKONW.getCode(), ErrorCode.UNKONW.getMessage());
     }
 
     public static <T> Result<T> error(String code, String message) {

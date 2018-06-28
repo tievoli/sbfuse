@@ -16,44 +16,43 @@ import java.util.Date;
 public class User implements Serializable {
 
     @TableId
-    @ApiModelProperty("主键")
+    @ApiModelProperty(value = "主键", required = true)
     private Long id;
 
-    @ApiModelProperty("用户名")
+    @ApiModelProperty(value = "用户名", required = true)
     private String username;
 
-    @ApiModelProperty("姓名")
+    @ApiModelProperty(value = "姓名", required = true)
     private String name;
 
-    @ApiModelProperty("密码")
+    @ApiModelProperty(value = "密码", required = true)
     private String password;
 
-    @ApiModelProperty("盐值")
+    @ApiModelProperty(value = "盐值")
     private String salt;
 
-    @TableField("phone_number")
-    @ApiModelProperty("电话号码")
+    @TableField(value = "phone_number")
+    @ApiModelProperty(value = "电话号码")
     private String phoneNumber;
 
-    @ApiModelProperty("邮箱地址")
+    @ApiModelProperty(value = "邮箱地址")
     private String email;
 
-    @ApiModelProperty("状态")
+    @ApiModelProperty(value = "状态")
     private String status;
 
-    @ApiModelProperty("是否删除")
+    @ApiModelProperty(value = "是否删除")
     private String deleted;
 
-    @ApiModelProperty("头像")
+    @ApiModelProperty(value = "头像")
     private String avatar;
 
     @TableField("create_time")
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     @TableField("update_time")
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty(value = "更新时间")
     private Date updateTime;
-
 
 }
