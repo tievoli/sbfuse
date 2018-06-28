@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  ################
+  #  MySQL
+  ################
+  datasource:
+    url: jdbc:mysql://localhost:3306/sbfuse?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: abcd1234
+    db-name: sbfuse
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
