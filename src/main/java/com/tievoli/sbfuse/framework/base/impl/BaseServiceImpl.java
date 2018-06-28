@@ -340,7 +340,7 @@ public class BaseServiceImpl<T, M extends BaseMapper> implements BaseService<T> 
 
     @Override
     public Map<String, Object> selectMap(Wrapper<T> wrapper) {
-        return SqlHelper.getObject((List<Map<String,Object>>) mapper.selectMaps(wrapper));
+        return SqlHelper.getObject((List<Map<String, Object>>) mapper.selectMaps(wrapper));
     }
 
     @Override

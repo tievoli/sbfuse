@@ -33,15 +33,15 @@ public class Result<T> implements Serializable {
         return new Result(code, message, data);
     }
 
-    public static <T> Result<T> failure() {
-        return failure("99999", "失败");
+    public static <T> Result<T> error() {
+        return error("99999", "失败");
     }
 
-    public static <T> Result<T> failure(String code, String message) {
-        return failure(code, message, null);
+    public static <T> Result<T> error(String code, String message) {
+        return error(code, message, null);
     }
 
-    public static <T> Result<T> failure(String code, String message, T data) {
+    public static <T> Result<T> error(String code, String message, T data) {
         return new Result<T>(code, message, data);
     }
 

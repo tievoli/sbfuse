@@ -3,25 +3,36 @@ package com.tievoli.sbfuse.framework.exceptions;
 
 public class BizRuntimeException extends RuntimeException {
 
-    /**
-     * Constructs a new runtime exception with {@code null} as its
-     * detail message.  The cause is not initialized, and may subsequently be
-     * initialized by a call to {@link #initCause}.
-     */
-    public BizRuntimeException() {
+    private ErrorCode errorCode;
+
+    private String code;
+
+    public BizRuntimeException(ErrorCode errorCode) {
         super();
+        this.errorCode = errorCode;
     }
 
-    /**
-     * Constructs a new runtime exception with the specified detail message.
-     * The cause is not initialized, and may subsequently be initialized by a
-     * call to {@link #initCause}.
-     *
-     * @param message the detail message. The detail message is saved for
-     *                later retrieval by the {@link #getMessage()} method.
-     */
-    public BizRuntimeException(String message) {
+    public BizRuntimeException(String code, String message) {
         super(message);
+        this.code = code;
+    }
+
+    public static BizRuntimeException create() {
+        return create(ErrorCode.UNKONW);
+    }
+
+    public static BizRuntimeException create(ErrorCode errorCode) {
+        return create(errorCode.getCode(), errorCode.getMessage());
+    }
+
+    public static BizRuntimeException create(String code, String message) {
+        return create(code, message, null);
+    }
+
+    public static BizRuntimeException create(String code, String message, Throwable cause) {
+        BizRuntimeException exception = new BizRuntimeException(message, cause);
+        exception.setCode(code);
+        return exception;
     }
 
     /**
@@ -75,5 +86,21 @@ public class BizRuntimeException extends RuntimeException {
      */
     protected BizRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public ErrorCode getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(ErrorCode errorCode) {
+        this.errorCode = errorCode;
     }
 }
