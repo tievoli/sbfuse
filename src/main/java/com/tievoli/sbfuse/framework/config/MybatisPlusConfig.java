@@ -19,7 +19,10 @@ public class MybatisPlusConfig {
     @Bean
     @Profile("dev")
     public PerformanceInterceptor performanceInterceptor() {
-        return new PerformanceInterceptor();
+        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
+        performanceInterceptor.setMaxTime(1000);
+        performanceInterceptor.setFormat(true);
+        return performanceInterceptor;
     }
 
 }

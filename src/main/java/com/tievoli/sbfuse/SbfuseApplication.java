@@ -11,4 +11,5 @@ public class SbfuseApplication {
     public static void main(String[] args) {
         SpringApplication.run(SbfuseApplication.class, args);
     }
+
 }
