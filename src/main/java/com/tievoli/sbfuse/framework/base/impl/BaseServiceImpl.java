@@ -26,6 +26,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * 基础服务的公共实现.
+ *
+ * @param <T>
+ */
 public class BaseServiceImpl<T> implements BaseService<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
@@ -37,9 +42,23 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     private static final int MAX_BATCH_SIZE = 200;
 
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    private BaseMapper<T> mapper;
+    protected BaseMapper<T> mapper;
+
+    /**
+     * 根据Mapper类型获取Mapper
+     *
+     * @param m
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <M extends BaseMapper> M getMapper(Class<M> m) {
+        return (M) mapper;
+    }
+
+    public <M extends BaseMapper> M getMapper() {
+        return (M) mapper;
+    }
 
     //获取泛型类型
     protected Class<T> getSuperClassGenricType() {

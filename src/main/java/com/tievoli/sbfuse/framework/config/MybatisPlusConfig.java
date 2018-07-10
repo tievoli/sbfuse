@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
  * MybatisPlus JavaConfig.
  */
 @Configuration
-@MapperScan(basePackages = "com.tievoli.sbfuse.biz.**.*Mapper")
+@MapperScan(basePackages = "com.tievoli.sbfuse.biz.*.mapper*")
 public class MybatisPlusConfig {
 
     /**

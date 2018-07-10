@@ -174,9 +174,9 @@ public class ExceptionController extends AbstractErrorController {
     }
 
     /**
-     * Provide access to the error properties.
+     * Provide access to the error config.
      *
-     * @return the error properties
+     * @return the error config
      */
     protected ErrorProperties getErrorProperties() {
         return this.errorProperties;
