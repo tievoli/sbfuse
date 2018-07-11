@@ -1,5 +1,6 @@
 package com.tievoli.sbfuse.framework.config;
 
+import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,14 @@ public class MybatisPlusConfig {
         performanceInterceptor.setMaxTime(1000);
         performanceInterceptor.setFormat(true);
         return performanceInterceptor;
+    }
+
+    /**
+     * 分页插件
+     */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
     }
 
 }
